@@ -17,10 +17,13 @@ class CategoriesTableSeeder extends Seeder
         $json = File::get("database/data/categories.json");
         $data = json_decode($json);
         foreach ($data as $obj) {
-            Category::create(array(
-                'external_id' => $obj->external_id,
-                'name' => $obj->name
-            ));
+            if(strlen($obj->name) < 200)
+            {
+                Category::create(array(
+                    'external_id' => $obj->external_id,
+                    'name' => $obj->name
+                ));
+            }
         }
     }
 }

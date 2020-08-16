@@ -16,14 +16,18 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->delete();
         $json = File::get("database/data/products.json");
         $data = json_decode($json);
+
         foreach ($data as $obj) {
-            Product::create(array(
-                'external_id' => $obj->external_id,
-                'name' => $obj->name,
-                'price' => $obj->price,
-                'category_id' => implode(",", $obj->category_id),
-                'quantity' => $obj->quantity
-            ));
+            if(strlen($obj->name) < 200)
+            {
+                Product::create(array(
+                    'external_id' => $obj->external_id,
+                    'name' => $obj->name,
+                    'price' => $obj->price,
+                    'category_id' => implode(",", $obj->category_id),
+                    'quantity' => $obj->quantity
+                ));
+            }
         }
     }
 }
