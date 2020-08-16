@@ -1,21 +1,23 @@
 <br>
-1) Создание БД
+1) выполнить " composer install "
 <br>
-php artisan migrate
+2) выполнить " npm install "
+<br>
+3) выполнить " npm run dev "
+<br>
+4) переименовать .env.example в .env
+<br>
+5) в .env вставить учетные данные вашей базы данных
+<br>
+6) выполнить " php artisan migrate "
+<br>
+7) выполнить " php artisan db:seed "
+<br>
+8) выполнить " php artisan serve "
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-
-
-
-9 ) Run the seed command to seed the database:
-<br>
-php artisan db:seed
-<br>
-
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
