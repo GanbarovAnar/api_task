@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/s', function (Request $request) {
+    dd($request->session()->get('_token'));
+});
+
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');

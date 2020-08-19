@@ -22,7 +22,9 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->double("price",15,2);
             $table->integer("quantity"); // количество
-            $table->string("category_id"); // потому что тут строка, содержащая категории через запятую
+
+//            $table->unsignedBigInteger("category_id")->nullable();
+//            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

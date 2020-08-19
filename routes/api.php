@@ -20,14 +20,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('product/get', 'ProductController@get');
 Route::get('product/id/{id}', 'ProductController@show');
-Route::middleware('auth:api')->post('product/create', 'ProductController@create');
-Route::middleware('auth:api')->post('product/update/{id}', 'ProductController@update');
-Route::middleware('auth:api')->post('product/delete/{id}', 'ProductController@delete');
-
 
 Route::get('category/get', 'CategoryController@get');
-Route::middleware('auth:api')->post('category/create', 'CategoryController@create');
-Route::middleware('auth:api')->post('category/update/{id}', 'CategoryController@update');
-Route::middleware('auth:api')->post('category/delete/{id}', 'CategoryController@delete');
+
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('product/create', 'ProductController@create');
+    Route::post('product/update/{id}', 'ProductController@update');
+    Route::post('product/delete/{id}', 'ProductController@delete');
+
+    Route::post('category/create', 'CategoryController@create');
+    Route::post('category/update/{id}', 'CategoryController@update');
+    Route::post('category/delete/{id}', 'CategoryController@delete');
+
+});
+
+
+
+
 
 

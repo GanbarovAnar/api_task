@@ -14,9 +14,8 @@ class AddColumnInCategory extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->unsignedBigInteger("category_id")->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
-
+            $table->unsignedBigInteger("parent_category")->nullable();
+            $table->foreign('parent_category')->references('id')->on('categories');
         });
     }
 

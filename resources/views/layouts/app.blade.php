@@ -18,6 +18,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var token = "Your access_token";
+            $.ajax({
+                url:"http://api_task.test/api/user",
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function(data, status) {
+                    return console.log("The returned data", data);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="app">

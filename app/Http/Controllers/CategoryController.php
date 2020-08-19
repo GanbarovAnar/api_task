@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,15 @@ class CategoryController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:200',
+            'external_id' => 'required'
+        ]);
+
         $category = Category::create([
             'external_id' => $request['external_id'],
-            'name' => $request['name']
+            'name' => $request['name'],
+            'parent_category' => $request['parent_category'] ?? ''
         ]);
 
         return response()->json([
@@ -33,7 +40,7 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-        $category = Category::all()->where('external_id', $request['id']);
+        $category = Category::where('external_id', $request['id'])->first();
         if (!$category)
         {
             return response()->json([
@@ -51,7 +58,7 @@ class CategoryController extends Controller
 
     public function delete(Request $request)
     {
-        $category = Category::all()->where('external_id', $request['id']);
+        $category = Category::where('external_id', $request['id'])->first();
 
         if ( !$category )
         {

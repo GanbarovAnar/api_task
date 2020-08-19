@@ -10,4 +10,9 @@ class Category extends Model
         'external_id',
         'name'
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

@@ -16,6 +16,14 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+
+                <script type="application/javascript">
+                    $(document).ready(function() {
+
+                    });
+
+                </script>
             </div>
         </div>
     </div>
